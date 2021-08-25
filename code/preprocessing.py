@@ -19,15 +19,11 @@ if __name__ == "__main__":
     args, _ = parser.parse_known_args()
 
     print("Received arguments {}".format(args))
-    os.environ
     
     input_data_path = os.path.join("/opt/ml/processing/input", "articles.csv")
 
     print("Reading input data from {}".format(input_data_path))
     df = pd.read_csv(input_data_path)
-    
-    # reduce the size of our dataset to reduce the training time
-    df = df[:0,df.shape[0]/2]
     print("df.shape:", df.shape)
     
     X_data = df.drop(df.columns[0], axis=1)
